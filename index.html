@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>VVITU Guntur | BTech Results Portal 2025-26</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f7fb;
+            color: #2d3748;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: #1a2c3e;
+            padding: 8px 0;
+            font-size: 12px;
+        }
+
+        .top-bar .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .top-bar a {
+            color: #a0aec0;
+            text-decoration: none;
+            margin-right: 20px;
+            transition: color 0.3s;
+        }
+
+        .top-bar a:hover {
+            color: #f8b551;
+        }
+
+        .social-icons a {
+            margin-left: 15px;
+            color: #a0aec0;
+        }
+
+        /* Main Header */
+        .main-header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Logo Image Styles - ADD THIS */
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-text h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a2c3e;
+        }
+
+        .logo-text p {
+            font-size: 11px;
+            color: #718096;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: #f8b551;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #1a2c3e 0%, #2c5282 100%);
+            padding: 50px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-section h1 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .hero-section p {
+            font-size: 16px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1280px;
+            margin: -30px auto 40px;
+            padding: 0 20px;
+        }
+
+        /* Results Portal Card */
+        .results-portal {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .portal-tabs {
+            display: flex;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 0 30px;
+        }
+
+        .tab {
+            padding: 18px 25px;
+            font-weight: 600;
+            color: #718096;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            color: #f8b551;
+            border-bottom-color: #f8b551;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 30px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Search Section */
+        .search-section {
+            background: #f9fafb;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .search-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 20px;
+        }
+
+        .search-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: flex-end;
+        }
+
+        .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: #f8b551;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(248, 181, 81, 0.1);
+        }
+
+        .btn-search {
+            background: linear-gradient(135deg, #f8b551 0%, #e67e22 100%);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-search:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(248, 181, 81, 0.3);
+        }
+
+        /* Result Box */
+        .result-box {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-header {
+            background: linear-gradient(135deg, #1a2c3e 0%, #2d3748 100%);
+            padding: 20px 25px;
+            color: white;
+        }
+
+        .result-header h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .result-header p {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .student-details {
+            padding: 25px;
+            background: #f9fafb;
+            border-bottom: 1px solid #e2e8f0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: #718096;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .detail-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        /* Grade Table */
+        .grade-table-wrapper {
+            padding: 0 25px;
+            overflow-x: auto;
+        }
+
+        .grade-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .grade-table th {
+            background: #f1f5f9;
+            padding: 14px 12px;
+            text-align: left;
+            font-size: 13px;
+            font-weight: 600;
+            color: #475569;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .grade-table td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 14px;
+        }
+
+        .grade-table tr:hover {
+            background: #faf5ff;
+        }
+
+        .grade-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        .grade-O { background: #c6f6d5; color: #276749; }
+        .grade-A-plus { background: #c6f6d5; color: #276749; }
+        .grade-A { background: #c6f6d5; color: #276749; }
+        .grade-B-plus { background: #feebc8; color: #c05621; }
+        .grade-B { background: #feebc8; color: #c05621; }
+        .grade-C { background: #fed7d7; color: #9b2c2c; }
+
+        /* SGPA Card */
+        .sgpa-card {
+            margin: 25px;
+            background: linear-gradient(135deg, #f8b551 0%, #e67e22 100%);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            color: white;
+        }
+
+        .sgpa-card h4 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .sgpa-value {
+            font-size: 48px;
+            font-weight: 800;
+            margin: 10px 0;
+        }
+
+        .sgpa-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 12px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        .stat-value {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        /* Notice Board */
+        .notice-board {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .notice-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f8b551;
+        }
+
+        .notice-list {
+            list-style: none;
+        }
+
+        .notice-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .notice-list li i {
+            color: #f8b551;
+            font-size: 14px;
+        }
+
+        .notice-list li a {
+            color: #4a5568;
+            text-decoration: none;
+            font-size: 14px;
+            flex: 1;
+        }
+
+        .notice-list li a:hover {
+            color: #f8b551;
+        }
+
+        .date {
+            font-size: 11px;
+            color: #a0aec0;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a2c3e;
+            color: #a0aec0;
+            padding: 40px 20px 20px;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-section h4 {
+            color: white;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #a0aec0;
+            text-decoration: none;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: #f8b551;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid #2d3748;
+            font-size: 12px;
+        }
+
+        /* Error Message */
+        .error-message {
+            background: #fff5f5;
+            border-left: 4px solid #fc8181;
+            padding: 20px;
+            border-radius: 12px;
+            color: #c53030;
+            margin: 20px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 24px;
+            }
+            .portal-tabs {
+                padding: 0 15px;
+                overflow-x: auto;
+            }
+            .tab {
+                padding: 12px 15px;
+                font-size: 13px;
+            }
+            .sgpa-value {
+                font-size: 36px;
+            }
+            .logo-img {
+                width: 45px;
+                height: 45px;
+            }
+            .logo-text h1 {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div>
+                <a href="#"><i class="fas fa-envelope"></i> coe@vvit.ac.in</a>
+                <a href="#"><i class="fas fa-phone"></i> 0863-123456</a>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header with Logo -->
+    <div class="main-header">
+        <div class="header-container">
+            <div class="logo-area">
+                <!-- VVIT LOGO PNG - REPLACE THIS WITH YOUR LOGO FILE -->
+                <img src="vvit-logo.png" alt="VVITU Logo" class="logo-img">
+                <!-- END LOGO -->
+                <div class="logo-text">
+                    <h1>Vasireddy Venkatadri <br>International Technological University</h1>
+                    <p>Guntur, Andhra Pradesh | NAAC A+ Accredited</p>
+                </div>
+            </div>
+            <div class="nav-menu">
+                <a href="#" class="active">Home</a>
+                <a href="#">Results</a>
+                <a href="#">Regulations</a>
+                <a href="#">Notifications</a>
+                <a href="#">Time Tables</a>
+                <a href="#">Apply Online</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1>BTech Results Portal</h1>
+        <p>Academic Year 2025-2026 | I Semester (R25 Regulation) Examinations</p>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <div class="results-portal">
+            <div class="portal-tabs">
+                <div class="tab active" onclick="switchTab('results')">📊 Results</div>
+                <div class="tab" onclick="switchTab('notifications')">📢 Notifications</div>
+                <div class="tab" onclick="switchTab('circulars')">📜 Circulars</div>
+                <div class="tab" onclick="switchTab('verification')">✅ Verification</div>
+            </div>
+
+            <!-- Results Tab -->
+            <div id="resultsTab" class="tab-content active">
+                <div class="search-section">
+                    <div class="search-title">
+                        <i class="fas fa-search" style="color: #f8b551;"></i> Search Your Result
+                    </div>
+                    <div class="search-form">
+                        <div class="form-group">
+                            <label>Hall Ticket Number</label>
+                            <input type="text" id="hallTicket" placeholder="Enter Hall Ticket Number" value="2025DCSBT10681">
+                        </div>
+                        <div class="form-group">
+                            <label>Select Semester</label>
+                            <select id="semester">
+                                <option value="1-1">I Semester (2025-26)</option>
+                                <option value="1-2">II Semester (2025-26)</option>
+                                <option value="2-1">III Semester (2026-27)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <button class="btn-search" onclick="getResult()">
+                                <i class="fas fa-search"></i> Get Result
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="resultContainer">
+                    <div style="text-align: center; padding: 60px 20px; color: #a0aec0;">
+                        <i class="fas fa-graduation-cap" style="font-size: 48px; margin-bottom: 20px; opacity: 0.5;"></i>
+                        <p>Enter your Hall Ticket Number to view your result</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notifications Tab -->
+            <div id="notificationsTab" class="tab-content">
+                <div class="notice-board" style="margin-top: 0;">
+                    <div class="notice-title">
+                        <i class="fas fa-bell" style="color: #f8b551;"></i>
+                        Latest Notifications
+                    </div>
+                    <ul class="notice-list">
+                        <li><i class="fas fa-file-alt"></i><a href="#">BTech I Semester Results Published - March 2026</a><span class="date">28-03-2026</span></li>
+                        <li><i class="fas fa-calendar-alt"></i><a href="#">Supplementary Examinations Schedule - April 2026</a><span class="date">25-03-2026</span></li>
+                        <li><i class="fas fa-print"></i><a href="#">Online Applications for Revaluation - Last Date: 05-04-2026</a><span class="date">22-03-2026</span></li>
+                        <li><i class="fas fa-certificate"></i><a href="#">Provisional Certificates Distribution Schedule</a><span class="date">20-03-2026</span></li>
+                        <li><i class="fas fa-chalkboard"></i><a href="#">Academic Calendar 2026-27 Released</a><span class="date">-03-2026</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Circulars Tab -->
+            <div id="circularsTab" class="tab-content">
+                <div class="notice-board" style="margin-top: 0;">
+                    <div class="notice-title">
+                        <i class="fas fa-scroll" style="color: #f8b551;"></i>
+                        Examination Circulars
+                    </div>
+                    <ul class="notice-list">
+                        <li><i class="fas fa-gavel"></i><a href="#">R25 Regulation - Grading System Guidelines</a><span class="date">10-03-2026</span></li>
+                        <li><i class="fas fa-balance-scale"></i><a href="#">Malpractice Prevention Measures - Important Instructions</a><span class="date">05-03-2026</span></li>
+                        <li><i class="fas fa-file-invoice"></i><a href="#">Examination Fee Structure 2026-27</a><span class="date">01-03-2026</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Verification Tab -->
+            <div id="verificationTab" class="tab-content">
+                <div class="notice-board" style="margin-top: 0;">
+                    <div class="notice-title">
+                        <i class="fas fa-shield-alt" style="color: #f8b551;"></i>
+                        Student / Academic Verification
+                    </div>
+                    <ul class="notice-list">
+                        <li><i class="fas fa-check-circle"></i><a href="#">Verify Result Authenticity</a><span class="date">Online</span></li>
+                        <li><i class="fas fa-id-card"></i><a href="#">Request Transcripts / Certificates</a><span class="date">Apply Online</span></li>
+                        <li><i class="fas fa-comment-dots"></i><a href="#">Redressal of Grievances Portal</a><span class="date">Active</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>About VVITU</h4>
+                <p>Vasireddy Venkatadri International Technological University continues to grow as a beacon of innovation and excellence, striving to empower the next generation of engineers, technologists, and leaders.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <p><a href="#">Examination Notifications</a></p>
+                <p><a href="#">Time Tables</a></p>
+                <p><a href="#">Apply for Certificates</a></p>
+                <p><a href="#">Student Verification</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Guntur, Andhra Pradesh, India</p>
+                <p><i class="fas fa-phone"></i> +91-863-1234567</p>
+                <p><i class="fas fa-envelope"></i> coe@vvit.ac.in</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025-2026 Vasireddy Venkatadri International Technological University. All Rights Reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // Student Database
+        const studentDatabase = {
+            "2025DCSBT10681": {
+                hallticket: "2025DCSBT10681",
+                name: "MOHAMMAD ZAHURULLAH",
+                fatherName: "MOHAMMAD ZAHURULLAH",
+                program: "B.Tech",
+                branch: "Computer Science & Engineering",
+                semester: "I Semester",
+                regulation: "R25",
+                academicYear: "2025-2026",
+                subjects: [
+                    { sno: 1, code: "CSEL101", name: "Structured Programming in C", grade: "C", gradePoint: 6, credits: 3, internal: 24, external: 42, total: 66 },
+                    { sno: 2, code: "CSEP101", name: "Spread Sheet Skills", grade: "A", gradePoint: 10, credits: 1, internal: 28, external: 45, total: 73 },
+                    { sno: 3, code: "CSEP102", name: "Design Thinking and Idea Lab", grade: "A", gradePoint: 10, credits: 1, internal: 30, external: 44, total: 74 },
+                    { sno: 4, code: "HSML101", name: "Effective English Communication", grade: "B(-)", gradePoint: 7, credits: 2, internal: 26, external: 48, total: 74 },
+                    { sno: 5, code: "MATL101", name: "Calculus", grade: "C(-)", gradePoint: 5, credits: 4, internal: 22, external: 38, total: 60 },
+                    { sno: 6, code: "MECL101", name: "Engineering Graphics", grade: "B", gradePoint: 8, credits: 3, internal: 27, external: 52, total: 79 },
+                    { sno: 7, code: "PHYL101", name: "Engineering Physics", grade: "C", gradePoint: 6, credits: 4, internal: 25, external: 44, total: 69 }
+                ],
+                sgpa: 7.44
+            }
+        };
+
+        function getGradeClass(grade) {
+            if (grade === 'O' || grade === 'A+' || grade === 'A') return 'grade-A';
+            if (grade === 'B+' || grade === 'B') return 'grade-B-plus';
+            if (grade === 'C' || grade === 'C(-)') return 'grade-C';
+            return 'grade-C';
+        }
+
+        function getResult() {
+            const hallTicket = document.getElementById('hallTicket').value.trim().toUpperCase();
+            const container = document.getElementById('resultContainer');
+            
+            if (!hallTicket) {
+                container.innerHTML = `<div class="error-message"><i class="fas fa-exclamation-triangle"></i> Please enter Hall Ticket Number</div>`;
+                return;
+            }
+            
+            const student = studentDatabase[hallTicket];
+            
+            if (!student) {
+                container.innerHTML = `<div class="error-message"><i class="fas fa-times-circle"></i> <strong>Invalid Hall Ticket</strong><br><br>The Hall Ticket Number "${hallTicket}" is not valid. Please check and try again.</div>`;
+                return;
+            }
+            
+            let subjectsHtml = '';
+            student.subjects.forEach(sub => {
+                subjectsHtml += `
+                    <tr>
+                        <td>${sub.sno}</td>
+                        <td><strong>${sub.code}</strong></td>
+                        <td>${sub.name}</td>
+                        <td style="text-align: center;">${sub.internal}</td>
+                        <td style="text-align: center;">${sub.external}</td>
+                        <td style="text-align: center; font-weight: bold;">${sub.total}</td>
+                        <td style="text-align: center;"><span class="grade-badge ${getGradeClass(sub.grade)}">${sub.grade}</span></td>
+                        <td style="text-align: center; font-weight: bold;">${sub.gradePoint}</td>
+                        <td style="text-align: center;">${sub.credits}</td>
+                    </tr>
+                `;
+            });
+            
+            const totalCredits = student.subjects.reduce((sum, s) => sum + s.credits, 0);
+            const totalPoints = student.subjects.reduce((sum, s) => sum + (s.gradePoint * s.credits), 0);
+            
+            container.innerHTML = `
+                <div class="result-box">
+                    <div class="result-header">
+                        <h3><i class="fas fa-graduation-cap"></i> Official Grade Sheet</h3>
+                        <p>Academic Year ${student.academicYear} | ${student.semester} (${student.regulation} Regulation)</p>
+                    </div>
+                    <div class="student-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Hall Ticket Number</span>
+                            <span class="detail-value">${student.hallticket}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Student Name</span>
+                            <span class="detail-value">${student.name}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Father's Name</span>
+                            <span class="detail-value">${student.fatherName}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Program & Branch</span>
+                            <span class="detail-value">${student.program} · ${student.branch}</span>
+                        </div>
+                    </div>
+                    <div class="grade-table-wrapper">
+                        <table class="grade-table">
+                            <thead>
+                                <tr><th>S.No</th><th>Code</th><th>Course Name</th><th>Int.</th><th>Ext.</th><th>Total</th><th>Grade</th><th>GP</th><th>Credits</th></tr>
+                            </thead>
+                            <tbody>${subjectsHtml}</tbody>
+                        </table>
+                    </div>
+                    <div class="sgpa-card">
+                        <h4>Semester Grade Point Average (SGPA)</h4>
+                        <div class="sgpa-value">${student.sgpa.toFixed(2)} / 10.0</div>
+                        <div class="sgpa-stats">
+                            <div class="stat-item"><span class="stat-label">Total Credits</span><div class="stat-value">${totalCredits}</div></div>
+                            <div class="stat-item"><span class="stat-label">Grade Points</span><div class="stat-value">${totalPoints}</div></div>
+                            <div class="stat-item"><span class="stat-label">Result</span><div class="stat-value">✅ PASS</div></div>
+                        </div>
+                        <div style="margin-top: 15px; font-size: 11px;">* SGPA = Σ(GP × Credits) / Σ Credits | R25 Regulation</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function switchTab(tab) {
+            const tabs = ['results', 'notifications', 'circulars', 'verification'];
+            tabs.forEach(t => {
+                document.getElementById(`${t}Tab`).classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(`${tab}Tab`).classList.add('active');
+            if (event && event.target) event.target.classList.add('active');
+        }
+
+        document.getElementById('hallTicket').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') getResult();
+        });
+
+        window.addEventListener('load', () => {
+            getResult();
+        });
+    </script>
+</body>
+</html>
